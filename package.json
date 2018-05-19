@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "mocha ./cart.test.js --exit --timeout 12000"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "mocha": "^5.0.5"
+  }
+}
