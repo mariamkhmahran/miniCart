@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register cart.test"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "mocha": "^5.0.5"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "latest"
+    ]
+  },
+  "dependencies": {
+    "@std/esm": "^0.26.0",
+    "babel-cli": "^6.26.0",
+    "chai": "^4.1.2"
+  }
+}
