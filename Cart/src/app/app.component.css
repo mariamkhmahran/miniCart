@@ -26,3 +26,56 @@
     font-size:30px;
     width:75%
 }
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 42px;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: gray;
+}
+
+.sidenavOpen {
+    width: 45% !important;
+}
+#main.sidenavOpen {
+    width: 55% !important;
+}
+
+#main.sidenavOpen /deep/ router-outlet + app-market .card {
+    width: 45% !important;
+}
+.sidenav .closebtn {
+    text-decoration: none;
+    font-size: 25px;
+    color: #101010;
+    display: block;
+    transition: 0.3s;
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px;
+    margin-right: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+@media screen and (max-width: 450px) {
+    .sidenavOpen {
+        width: 100% !important;
+    }
+    #main.sidenavOpen {
+        width: 0px !important;
+    }
+} 

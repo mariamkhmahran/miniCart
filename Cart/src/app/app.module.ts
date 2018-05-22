@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { CartComponent } from './cart/cart.component';
+import { CartService } from './cart.service';
 import { MarketComponent } from './market/market.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './/app-routing.module';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

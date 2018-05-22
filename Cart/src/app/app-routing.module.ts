@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MarketComponent } from './market/market.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes = [
   {
@@ -13,6 +14,10 @@ const routes = [
   {
     path: 'market',
     component: MarketComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   }
 ];
 

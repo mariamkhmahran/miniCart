@@ -28,9 +28,10 @@ p {
     border-style: solid;
     border-width: 1px;
     border-color: black;
+    color: black;
     background: white;
-    width: 70px;
-    height: 25px;
+    text-decoration: none;
+    padding: 7px;
     position: relative;
     top: 6%;
     left:80%;

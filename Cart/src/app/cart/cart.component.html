@@ -1,3 +1,9 @@
-<p>
-  cart works!
-</p>
+
+<div class="card" *ngFor="let item of items">
+    <div class="container">
+        <h4><b>{{item.product.id}}</b></h4>
+        <p>{{item.count}}</p>
+    </div>
+    <a [routerLink]="" class="button add" (click)="addToCart(product.id)" >ADD +</a>
+</div> 
+      

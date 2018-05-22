@@ -1,5 +1,15 @@
 <div class="header">
-  <a class="home" [routerLink]="">S H O P</a>
-  <a class="cart_btn"> <img src="assets/CheckoutIcon.png"></a>
+  <a class="home" routerLink="market">S H O P</a>
+  <a class="cart_btn" [routerLink]="" (click)="openNav()"> <img src="assets/CheckoutIcon.png"></a>
 </div>
-<router-outlet></router-outlet>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" style="width:20%;float:left">&times;</a>
+  <h1 style="width:20%;float:left">ITEMS</h1>
+  <app-cart></app-cart>
+</div>
+  
+  
+<div id="main">
+  <router-outlet></router-outlet>
+</div>

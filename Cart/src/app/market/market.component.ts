@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Product } from '../Product'
+import * as localForage from 'localforage';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-market',
@@ -12,7 +14,7 @@ export class MarketComponent implements OnInit {
 
   products: [Product];
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
     const self = this;
@@ -27,5 +29,10 @@ export class MarketComponent implements OnInit {
         console.log(error);
     });
   }
+  addToCart(id: number) {
 
+    var product = this.products[id];
+
+    this.cartService.addItem(product);
+  }
 }
