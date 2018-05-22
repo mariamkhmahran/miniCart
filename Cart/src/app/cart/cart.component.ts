@@ -1,6 +1,22 @@
-export default class Cart {
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css']
+})
+
+
+
+export class CartComponent implements OnInit {
+
+    items: [any];
+
     constructor() {
-        this.items = [];
+    }
+
+
+    ngOnInit() {
     }
 
     getItems() {
@@ -8,8 +24,8 @@ export default class Cart {
     }
 
     getItemIndex(product) {
-        for( let i = 0 ; i < this.items.length ; i++) {
-            if (this.items[i].product.id === product.id){
+        for ( let i = 0 ; i < this.items.length ; i++) {
+            if (this.items[i].product.id === product.id) {
                 return i;
             }
         }
@@ -73,7 +89,7 @@ export default class Cart {
     }
 
     clearCart() {
-        this.items = [];
+        this.items.splice(0,this.items.length);
     }
 
 }

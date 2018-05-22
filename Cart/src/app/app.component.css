@@ -1,0 +1,28 @@
+.header a,.home {
+    text-decoration:none;
+}
+.header {
+    float:right;
+    background-color:#fff;
+    border-style:solid;
+    border-color:gray;
+    border-width:1px;
+    text-align:center;
+    height:40px;
+    width:100%
+}
+.header a {
+    float:left
+}
+.cart_btn {
+    text-align:right;
+    width:20%;
+    margin-top:7px
+}
+.home {
+    text-align:left;
+    margin:5px;
+    color:gray;
+    font-size:30px;
+    width:75%
+}

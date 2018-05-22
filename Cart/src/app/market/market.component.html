@@ -1,0 +1,8 @@
+<div class="card" *ngFor="let product of products">
+  <img src="{{product.image}}" alt="product image" style="width:100%">
+  <div class="container">
+    <h4><b>{{product.title}}</b></h4>
+    <p>{{product.description}}</p>
+  </div>
+  <button class="add" >ADD +</button>
+</div> 
