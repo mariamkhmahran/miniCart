@@ -1,11 +1,11 @@
 <div class="header">
   <a class="home" routerLink="market">S H O P</a>
-  <a class="cart_btn" [routerLink]="" (click)="openNav()"> <img src="assets/CheckoutIcon.png"></a>
+  <a class="cart_btn" id="cart_btn" [routerLink]="" (click)="openNav()" data-badge="0"> <img src="assets/CheckoutIcon.png"></a>
 </div>
 
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" style="width:20%;float:left">&times;</a>
-  <h1 style="width:20%;float:left">ITEMS</h1>
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <span class="title">ITEMS</span>
   <app-cart></app-cart>
 </div>
   

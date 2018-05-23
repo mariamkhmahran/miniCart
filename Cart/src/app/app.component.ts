@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CartService } from './cart.service';
+import * as localForage from 'localforage';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +8,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private cartService: CartService){
+    var self = this;
+
+    localForage.getItem('items').then(function (value) {
+      let items: [any];
+      if(value){
+          items = value as [any];
+      } else {
+          items = [] as [any];
+      }
+      self.cartCount = items.length;
+
+      var count = self.cartCount + "";
+      document.getElementById("cart_btn").setAttribute("data-badge", count);
+      
+    }).catch(function (err) {
+        console.log(err);
+    });
+  }
   title = 'app';
+  cartCount: number;
 
   /* Set the width of the side navigation to 250px */
   openNav() {
