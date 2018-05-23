@@ -10,6 +10,7 @@ import * as localForage from 'localforage';
 export class AppComponent {
   constructor(private cartService: CartService){
     this.getCount();
+    // TODO: why using setInterval?
     setInterval(() => {
       this.getCount();
     }, 5000);
@@ -19,7 +20,7 @@ export class AppComponent {
 
   getCount() {
     var self = this;
-
+    // TODO: use the card service
     localForage.getItem('items').then(function (value) {
       let items: [any];
       if(value){

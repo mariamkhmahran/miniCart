@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as localForage from 'localforage';
 
+// TODO: have key methods return the new items
 @Injectable()
 export class CartService {
 

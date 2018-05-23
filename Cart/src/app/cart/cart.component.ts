@@ -9,7 +9,7 @@ import { CartService } from "../cart.service";
 })
 
 
-
+// TODO: use only one source of truth for items
 export class CartComponent implements OnInit {
 
     items: [any];
@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
 
     ngOnInit() {
         this.getItems();
+        // TODO: why do you keep calling this indefinitly 
         setInterval(() => {
             this.getItems();
         }, 2000);
@@ -28,7 +29,7 @@ export class CartComponent implements OnInit {
 
     getItems() {
         const self = this;
-        
+        // TODO: should not load directly from locahorge the component should not be awate of this detail
         localForage.getItem('items').then(function (value) {
             self.items = value as [any];
             self.total = self.getTotal();
@@ -64,7 +65,7 @@ export class CartComponent implements OnInit {
     }
 
     removeProduct(index) {
-
+        // TODO: use the card service which is there items in the comonent
         const self = this;
         this.items.splice(index, 1);
 
@@ -75,6 +76,7 @@ export class CartComponent implements OnInit {
     }
 
     getTotal() {
+        // TODO: use the card service
         let total = 0;
         for(let i = 0 ; i < this.items.length ; i++) {
             let price = this.items[i].price as number;
@@ -84,6 +86,7 @@ export class CartComponent implements OnInit {
     }
 
     clearCart() {
+        // TODO: create a method
         this.items = null;
         this.total = 0;
         localForage.setItem('items', []);
