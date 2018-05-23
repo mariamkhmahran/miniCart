@@ -9,6 +9,15 @@ import * as localForage from 'localforage';
 })
 export class AppComponent {
   constructor(private cartService: CartService){
+    this.getCount();
+    setInterval(() => {
+      this.getCount();
+    }, 5000);
+  }
+  title = 'app';
+  cartCount: number;
+
+  getCount() {
     var self = this;
 
     localForage.getItem('items').then(function (value) {
@@ -27,8 +36,6 @@ export class AppComponent {
         console.log(err);
     });
   }
-  title = 'app';
-  cartCount: number;
 
   openNav() {
     document.getElementById("mySidenav").classList.add("sidenavOpen");
