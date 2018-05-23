@@ -70,11 +70,14 @@ p{
     bottom:0
 }
 .actions{
-    width:47%;
-    height:5%;
-    margin:1% 1% 60px
+    margin:3% 1% 50px;
+    padding:3%
 }
-@media only screen and (max-width:400px){
+.actions .button{
+    margin:5px;
+    padding:5px 13%
+}
+@media only screen and (max-width:500px){
     .main{
         height:400px
     }
@@ -90,5 +93,9 @@ p{
         font-size:14px;
         width:40%;
         text-overflow:ellipsis
+    }
+    .actions .button{
+        padding-left:25%;
+        padding-right:25%
     }
 }

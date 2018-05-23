@@ -16,7 +16,9 @@
         <a href="javascript:void(0)" class="removebtn" (click)="removeProduct(i)">&times;</a>
     </div> 
 
-    <button class="actions" (click)="clearCart()" *ngIf= "total > 0" >CLEAR CART</button>
-    <button class="actions" (click)="clearCart()" *ngIf= "total > 0"  >PAY {{total}} EGP</button>
+    <div class="actions">
+        <a [routerLink]="" class="button" (click)="clearCart()" *ngIf= "total > 0" >CLEAR CART</a>
+        <a [routerLink]="" class="button" (click)="clearCart()" *ngIf= "total > 0"  >PAY {{total}} EGP</a>
+    </div>
 </div>
       

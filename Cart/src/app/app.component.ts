@@ -22,7 +22,7 @@ export class AppComponent {
 
       var count = self.cartCount + "";
       document.getElementById("cart_btn").setAttribute("data-badge", count);
-      
+
     }).catch(function (err) {
         console.log(err);
     });
@@ -30,13 +30,11 @@ export class AppComponent {
   title = 'app';
   cartCount: number;
 
-  /* Set the width of the side navigation to 250px */
   openNav() {
     document.getElementById("mySidenav").classList.add("sidenavOpen");
     document.getElementById("main").classList.add("sidenavOpen");
   }
 
-  /* Set the width of the side navigation to 0 */
   closeNav() {
     document.getElementById("mySidenav").classList.remove("sidenavOpen");
     document.getElementById("main").classList.remove("sidenavOpen");
