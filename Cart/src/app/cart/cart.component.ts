@@ -12,7 +12,8 @@ import { CartService } from "../cart.service";
 
 export class CartComponent implements OnInit {
 
-    items: {};
+    items: [any];
+    total: number;
 
     constructor(private cartService: CartService) {
     }
@@ -25,81 +26,64 @@ export class CartComponent implements OnInit {
     getItems() {
         const self = this;
         
-        
         localForage.getItem('items').then(function (value) {
-            self.items = value;
+            self.items = value as [any];
+            self.total = self.getTotal();
         }).catch(function (err) {
             console.log(err);
         });
     }
 
-    // getItemIndex(product) {
-    //     for ( let i = 0 ; i < this.items.length ; i++) {
-    //         if (this.items[i].product.id === product.id) {
-    //             return i;
-    //         }
-    //     }
-    //     return -1;
-    // }
+    addItem(index) {
+        
+        var product = this.items[index].product;
 
-    // hasProduct(product) {
-    //     if(this.getItemIndex(product) === -1) {
-    //         return false;
-    //     }
-    //     return true;
-    // }
+        this.cartService.addItem(product);
+        setTimeout(() => 
+        {
+            this.getItems();
+        },
+        300);
+        
+    }
 
-    // addItem(product) {
-    //     var index = this.getItemIndex(product);
-    //     if (index > -1) {
-    //         this.items[index].count++;
-    //         this.items[index].price = this.items[index].count * this.items[index].product.price;
-    //     } else {
-    //         let item = {
-    //             product: product,
-    //             count: 1,
-    //             price: product.price
-    //         }
-    //         this.items.push(item);
-    //     }
-    // }
+    removeItem(index) {
+        
+        var product = this.items[index].product;
 
-    // removeItem(product) {
-    //     var index = this.getItemIndex(product);
-    //     if(index > -1) {
-    //         this.items[index].count--;
-    //         this.items[index].price = this.items[index].count * this.items[index].product.price;
-    //         if (this.items[index].count === 0) {
-    //             this.items.splice(index, 1);
-    //         }
-    //     }
-    // }
+        this.cartService.removeItem(product);
+        setTimeout(() => 
+        {
+            this.getItems();
+        },
+        300);
+        
+    }
 
-    // removeProduct(product) {
-    //     var index = this.getItemIndex(product);
-    //     if(index > -1) {
-    //         this.items.splice(index, 1);
-    //     }
-    // }
+    removeProduct(index) {
 
-    // getItem(product) {
-    //     let index = this.getItemIndex(product);
-    //     if (index > -1 ){
-    //         return this.items[index];
-    //     }
-    //     return null;
-    // }
+        const self = this;
+        this.items.splice(index, 1);
 
-    // getTotal() {
-    //     let total = 0;
-    //     for(let i = 0 ; i < this.items.length ; i++) {
-    //         total += this.items[i].price;
-    //     }
-    //     return total;
-    // }
+        localForage.setItem('items', self.items).then(function(){
+            self.getItems();
+            self.getTotal();
+        });
+    }
 
-    // clearCart() {
-    //     this.items.splice(0,this.items.length);
-    // }
+    getTotal() {
+        let total = 0;
+        for(let i = 0 ; i < this.items.length ; i++) {
+            let price = this.items[i].price as number;
+            total += price;
+        }
+        return total;
+    }
+
+    clearCart() {
+        this.items = null;
+        this.total = 0;
+        localForage.setItem('items', []);
+    }
 
 }

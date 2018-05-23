@@ -1,9 +1,22 @@
 
-<div class="card" *ngFor="let item of items">
-    <div class="container">
-        <h4><b>{{item.product.id}}</b></h4>
-        <p>{{item.count}}</p>
-    </div>
-    <a [routerLink]="" class="button add" (click)="addToCart(product.id)" >ADD +</a>
-</div> 
+<div class="main">
+    <div class="card" *ngFor="let item of items; let i = index">
+        <img src="{{item.product.image}}" alt="product image">
+        <div class="info">
+            <span id="title"><b>{{item.product.title}}</b></span>
+            <span id="price">{{item.price}} EGP</span>
+            <div class="footer" align="right">
+                <div class="counters">
+                    <button class="counter_btn" (click)="removeItem(i)" >-</button>
+                    <span id="count">{{item.count}}</span>
+                    <button class="counter_btn" (click)="addItem(i)" >+</button>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="removebtn" (click)="removeProduct(i)">&times;</a>
+    </div> 
+
+    <button class="actions" (click)="clearCart()" *ngIf= "total > 0" >CLEAR CART</button>
+    <button class="actions" (click)="clearCart()" *ngIf= "total > 0"  >PAY {{total}} EGP</button>
+</div>
       
