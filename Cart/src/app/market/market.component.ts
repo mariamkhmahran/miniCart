@@ -21,17 +21,17 @@ export class MarketComponent implements OnInit {
     
     axios.get('https://faker-api-yczfsfkfcd.now.sh/api/products')
     .then(function (response) {
-      console.log(response.data.data);
       self.products = response.data.data;
-      console.log(self.products[0]);
     })
     .catch(function (error) {
         console.log(error);
     });
-  }
-  addToCart(id: number) {
 
-    var product = this.products[id];
+  }
+
+  addToCart(i: number) {
+
+    var product = this.products[i];
 
     this.cartService.addItem(product);
   }

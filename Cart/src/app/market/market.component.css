@@ -1,54 +1,55 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 31%;
-    height: 600px;
-    float: left;
-    margin: 1%;
-    position: relative;
+.card,.card .add,p{
+    position:relative
 }
-
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.card{
+    box-shadow:0 4px 8px 0 rgba(0,0,0,.2);
+    transition:.3s;
+    width:31%;
+    height:600px;
+    float:left;
+    margin:1%
 }
-
-.container {
-    padding: 2px 16px;
-    height: 200px;
+.card:hover{
+    box-shadow:0 8px 16px 0 rgba(0,0,0,.2)
 }
-
-p {
-    overflow: hidden;
-    position: relative;
-    text-align: justify;
-    text-overflow: ellipsis;
+.container{
+    padding:2px 16px;
+    height:200px
 }
-
-.card .add {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    color: black;
-    background: white;
-    text-decoration: none;
-    padding: 7px;
-    position: relative;
-    top: 6%;
-    left:80%;
+p{
+    overflow:hidden;
+    text-align:justify;
+    text-overflow:ellipsis
 }
-
-@media only screen and (max-width: 600px) {
-    .card {
-        width: 45%;
+.card .add{
+    padding:7px;
+    top:7%;
+    left:75%
+}
+.price{
+    text-align:center;
+    position:absolute;
+    width:115px;
+    height:30px;
+    right:0;
+    top:0;
+    background:#fff;
+    color:#000;
+    border:1px solid #000;
+    border-radius:0 0 12px 12px
+}
+@media only screen and (max-width:600px){
+    .card{
+        width:45%
     }
-    .card .add {
-        position: relative;
-        top: 15%;
-        left:70%;
+    .card .add{
+        position:relative;
+        top:15%;
+        left:70%
     }
 }
-@media only screen and (max-width: 400px) {
-    .card {
-        width: 100%;
+@media only screen and (max-width:400px){
+    .card{
+        width:100%
     }
 }
