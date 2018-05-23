@@ -21,6 +21,9 @@ export class CartComponent implements OnInit {
 
     ngOnInit() {
         this.getItems();
+        setInterval(() => {
+            this.getItems();
+        }, 2000);
     }
 
     getItems() {
