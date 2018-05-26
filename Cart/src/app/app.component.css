@@ -1,6 +1,6 @@
 .header,.sidenav{
     position:fixed;
-    z-index:1;
+    z-index:3;
     background-color:#fff
 }
 .header a,.home{
@@ -52,7 +52,11 @@
     width:55%!important
 }
 #main.sidenavOpen /deep/ router-outlet+app-market .card{
-    width:45%!important
+    width:45%!important;
+    height: 350px !important;
+}
+#main.sidenavOpen /deep/ router-outlet+app-market .card:hover .container{
+    height: 280px !important;
 }
 .sidenav .closebtn,.sidenav .title{
     width:20%;
