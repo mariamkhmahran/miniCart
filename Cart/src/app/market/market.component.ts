@@ -13,8 +13,11 @@ import { CartService } from '../cart.service';
 export class MarketComponent implements OnInit {
 
   products: [Product];
+  cart: [any];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+    this.cartService.newItems.subscribe((value: [any]) => { this.cart = value; });
+  }
 
   ngOnInit() {
     const self = this;
@@ -22,6 +25,9 @@ export class MarketComponent implements OnInit {
     axios.get('https://faker-api-yczfsfkfcd.now.sh/api/products')
     .then(function (response) {
       self.products = response.data.data;
+      for(let i = 0 ; i < self.products.length ; i++){
+        self.products[i].price = self.products[i].price as number * 1;
+      }
     })
     .catch(function (error) {
         console.log(error);
@@ -34,5 +40,20 @@ export class MarketComponent implements OnInit {
     var product = this.products[i];
 
     this.cartService.addItem(product);
+
+    var x = document.getElementById("snackbar");
+
+    x.className = "show";
+
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
+  inCart(index): boolean {
+    for(let i = 0; i < this.cart.length ; i++){
+      if(this.cart[i].product.id == this.products[index].id){
+        return true;
+      }
+      console.log("false");
+    }
   }
 }

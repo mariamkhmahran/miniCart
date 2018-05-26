@@ -2,10 +2,8 @@
     position:relative
 }
 .card{
-    box-shadow:0 4px 8px 0 rgba(0,0,0,.2);
-    transition:.3s;
     width:31%;
-    height:600px;
+    height:400px;
     float:left;
     margin:1%
 }
@@ -13,8 +11,40 @@
     box-shadow:0 8px 16px 0 rgba(0,0,0,.2)
 }
 .container{
+    background: whitesmoke;
+    position:absolute;
+    bottom: -2px;
+    /* padding:2px 16px; */
+    height:100px;
+    width: 92%;
+    transition:.5s;
     padding:2px 16px;
-    height:200px
+    z-index: 2;
+}
+.card:hover .container{
+    height: 230px;
+}
+.card:hover #description{
+    display: inline;
+    transition:.9s;
+}
+#description{
+    display: none;
+}
+
+.card:hover > .overlay {
+    position: absolute;
+    top: 0;
+    width:100%;
+    height:100%;
+    left: 0;
+    background-color:#000;
+    opacity:0.4;
+    z-index: 1;
+    display: block;
+}
+.add{
+    float: right;
 }
 p{
     overflow:hidden;
@@ -23,29 +53,59 @@ p{
 }
 .card .add{
     padding:7px;
-    top:7%;
-    left:75%
+    transition: 0.5;
+}
+.card .added{
+    padding:7px;
+    border-color: green !important;
+    color: green !important;
+    transition: 0.5;
 }
 .price{
     text-align:center;
+    padding: 17px;
     position:absolute;
-    width:115px;
+    width:30px;
     height:30px;
     right:0;
     top:0;
-    background:#fff;
+    background: black;
     color:#000;
     border:1px solid #000;
-    border-radius:0 0 12px 12px
+    border-radius: 50%;
+    display: inline-block;
+    color: white;
+    box-shadow:0 0px 16px 0 rgb(199, 188, 188);
+    z-index: 2;
 }
 @media only screen and (max-width:600px){
     .card{
-        width:45%
+        width:45%;
+        height: 550px
+    }
+    .container{
+        height: 350px;
+        width: 88%;
+        display:flex;
+        flex-direction:column;
+        flex-wrap:wrap
+    }
+    .add{
+        float: unset;
+    }
+    .card:hover .container{
+        height: 350px;
+    }
+    #description{
+        display: unset;
     }
     .card .add{
         position:relative;
         top:15%;
         left:70%
+    }
+    .card:hover > .overlay {
+        display: none;
     }
 }
 @media only screen and (max-width:400px){
