@@ -8,8 +8,6 @@ import { CartService } from "../cart.service";
   styleUrls: ['./cart.component.css']
 })
 
-
-// TODO: use only one source of truth for items
 export class CartComponent implements OnInit {
 
     items: [any];
@@ -21,21 +19,11 @@ export class CartComponent implements OnInit {
 
     ngOnInit() {
         this.getItems();
-        // TODO: why do you keep calling this indefinitly 
-        setInterval(() => {
-            this.getItems();
-        }, 2000);
     }
 
     getItems() {
-        const self = this;
-        // TODO: should not load directly from locahorge the component should not be awate of this detail
-        localForage.getItem('items').then(function (value) {
-            self.items = value as [any];
-            self.total = self.getTotal();
-        }).catch(function (err) {
-            console.log(err);
-        });
+        this.cartService.newItems.subscribe((value: [any]) => { this.items = value; });
+        this.cartService.newTotal.subscribe((value: number) => { this.total = value; });
     }
 
     addItem(index) {
@@ -43,11 +31,6 @@ export class CartComponent implements OnInit {
         var product = this.items[index].product;
 
         this.cartService.addItem(product);
-        setTimeout(() => 
-        {
-            this.getItems();
-        },
-        300);
         
     }
 
@@ -56,40 +39,24 @@ export class CartComponent implements OnInit {
         var product = this.items[index].product;
 
         this.cartService.removeItem(product);
-        setTimeout(() => 
-        {
-            this.getItems();
-        },
-        300);
         
     }
 
-    removeProduct(index) {
-        // TODO: use the card service which is there items in the comonent
-        const self = this;
-        this.items.splice(index, 1);
-
-        localForage.setItem('items', self.items).then(function(){
-            self.getItems();
-            self.getTotal();
-        });
+    removeProduct(product) {
+        this.cartService.removeProduct(product);
     }
 
-    getTotal() {
-        // TODO: use the card service
-        let total = 0;
-        for(let i = 0 ; i < this.items.length ; i++) {
-            let price = this.items[i].price as number;
-            total += price;
+    clearCart(type) {
+        console.log(type);
+        this.cartService.clearCart();
+
+        if(type === "buy") {
+            var x = document.getElementById("thanks");
+
+            x.className = "show";
+
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
-        return total;
-    }
-
-    clearCart() {
-        // TODO: create a method
-        this.items = null;
-        this.total = 0;
-        localForage.setItem('items', []);
     }
 
 }
