@@ -77,6 +77,10 @@ p{
     margin:5px;
     padding:5px 11%
 }
+.message{
+    color: gray;
+    font-size: 40px;
+}
 @media only screen and (max-width:500px){
     .main{
         height:400px
@@ -100,5 +104,8 @@ p{
     }
     .actions {
         padding: 0px;
+    }
+    .message{
+        font-size: 20px;
     }
 }

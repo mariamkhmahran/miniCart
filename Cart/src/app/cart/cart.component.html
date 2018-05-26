@@ -1,5 +1,10 @@
 
 <div class="main">
+    <div align="center">
+        <br><br>
+    <pre class ="message" *ngIf="total == 0">Cart is empty...
+let's start shopping!!</pre>
+    </div>
     <div class="card" *ngFor="let item of items; let i = index">
         <img src="{{item.product.image}}" alt="product image">
         <div class="info">
@@ -13,12 +18,14 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:void(0)" class="removebtn" (click)="removeProduct(i)">&times;</a>
+        <a href="javascript:void(0)" class="removebtn" (click)="removeProduct(item.product)">&times;</a>
     </div> 
 
     <div class="actions">
-        <a [routerLink]="" class="button" (click)="clearCart()" *ngIf= "total > 0" >CLEAR CART</a>
-        <a [routerLink]="" class="button" (click)="clearCart()" *ngIf= "total > 0"  >PAY {{total}} EGP</a>
+        <a [routerLink]="" class="button" (click)="clearCart('clear')" *ngIf= "total > 0" >CLEAR CART</a>
+        <a [routerLink]="" class="button" (click)="clearCart('buy')" *ngIf= "total > 0"  >PAY {{total}} EGP</a>
     </div>
 </div>
+
+<div id="thanks">Thank you for shopping with us :)</div>
       
